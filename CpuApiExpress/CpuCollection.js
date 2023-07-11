@@ -23,6 +23,7 @@ class CpuCollection
         let cpu = {};
 
         // implémenter ici la recherche d'un CPU par son identifiant
+        cpu = this.data.filter(cpu => cpu.id == _id);
 
         return cpu;
     }
@@ -31,6 +32,10 @@ class CpuCollection
     {
         // implémenter ici l'ajout d'un CPU dans la collection 'this.data' puis retourner le nouveau CPU ajouté
         // Pensez à générer un nouvel identifiant pour le nouveau CPU
+
+        let cpu_id = Math.max.apply(Math, this.data.map(function(cpu) { return cpu.id}))
+        _newCpu.id = cpu_id +  1;
+        this.data.push(_newCpu);
 
         return _newCpu;
     }
